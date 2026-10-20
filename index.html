@@ -5,420 +5,708 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stop the EU Kids Act</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        campaign: {
-                            yellow: '#ffcc00',
-                            dark: '#121212',
-                            gray: '#1e1e1e',
-                            red: '#ef4444'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-        }
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #121212;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ffcc00;
-        }
-        /* Details/Summary Accordion styles */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
+        /* Custom Theme Adjustments */
+        body { background-color: #111111; color: #f3f4f6; font-family: 'Inter', sans-serif; }
+        .text-accent { color: #facc15; }
+        .bg-accent { background-color: #facc15; color: #000; }
+        .bg-accent:hover { background-color: #eab308; }
+        .glass-panel { background: rgba(31, 31, 31, 0.8); border: 1px solid #333; }
+        /* Progress Bar Animation */
+        .progress-bar-fill { transition: width 1s ease-in-out; }
     </style>
 </head>
-<body class="antialiased selection:bg-campaign-yellow selection:text-black">
+<body class="antialiased">
 
-    <nav class="fixed w-full z-50 bg-campaign-dark/90 backdrop-blur-md border-b border-gray-800 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-24">
-                
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#home" class="flex items-center gap-3 group relative cursor-pointer">
-                        <div class="relative w-16 h-16 flex items-center justify-center rounded-full border-4 border-campaign-red overflow-hidden bg-campaign-dark z-10 group-hover:scale-105 transition-transform">
-                            <!-- Strike through line -->
-                            <div class="absolute w-full h-1 bg-campaign-red rotate-[-45deg] z-20 top-1/2 left-0 transform -translate-y-1/2"></div>
-                            <div class="text-center leading-tight font-black text-white text-xs z-10 relative mt-1">
-                                EU<br>KIDS<br>ACT
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="text-campaign-yellow font-bold hover:text-white px-3 py-2 text-sm md:text-base transition-colors border-b-2 border-campaign-yellow">Home</a>
-                        <a href="#about" class="text-white hover:text-campaign-yellow px-3 py-2 text-sm md:text-base font-semibold transition-colors">What is the EU Kids Act?</a>
-                        <a href="#faq" class="text-white hover:text-campaign-yellow px-3 py-2 text-sm md:text-base font-semibold transition-colors">FAQs</a>
-                        <a href="#contact" class="text-white hover:text-campaign-yellow px-3 py-2 text-sm md:text-base font-semibold transition-colors">Contact us</a>
-                    </div>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-campaign-dark border-b border-gray-800" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="text-campaign-yellow block px-3 py-2 text-base font-bold">Home</a>
-                <a href="#about" class="text-white hover:text-campaign-yellow block px-3 py-2 text-base font-semibold">What is the EU Kids Act?</a>
-                <a href="#faq" class="text-white hover:text-campaign-yellow block px-3 py-2 text-base font-semibold">FAQs</a>
-                <a href="#contact" class="text-white hover:text-campaign-yellow block px-3 py-2 text-base font-semibold">Contact us</a>
-            </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full glass-panel z-50 backdrop-blur-md">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center text-sm md:text-base font-semibold text-gray-300">
+            <a href="#top" class="hover:text-accent transition" data-i18n="nav_home">Home</a>
+            <a href="#impact" class="hover:text-accent transition" data-i18n="nav_impact">How does this law affect us?</a>
+            <a href="#faq" class="hover:text-accent transition" data-i18n="nav_faq">FAQs</a>
+            <a href="#info" class="hover:text-accent transition" data-i18n="nav_info">Info</a>
         </div>
     </nav>
 
-    <main class="pt-24">
-        <header id="home" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 text-center">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-campaign-yellow mb-6 leading-tight tracking-tight">
-                Would you give your <br class="hidden md:block"> ID card to play a round <br class="hidden md:block"> of CS2 or CoD?
-            </h1>
-            <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-8">
-                If the <span class="text-campaign-yellow">EU Kids Act</span> becomes law you will be forced to.
-            </h2>
-            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-medium">
-                You can help stop this by emailing your country's Members of the EU Parliament (MEPs) asking them to vote against this law.
+    <div id="top" class="pt-20"></div>
+
+    <!-- Language Selector -->
+    <div class="max-w-4xl mx-auto px-4 py-6 flex flex-wrap items-center gap-3">
+        <span class="text-gray-400 font-semibold" data-i18n="select_language">Select your language:</span>
+        <div class="flex gap-3 text-2xl">
+            <button onclick="setLanguage('en')" title="English">🇬🇧</button>
+            <button onclick="setLanguage('gr')" title="Greek">🇬🇷</button>
+            <button onclick="setLanguage('de')" title="German">🇩🇪</button>
+            <button onclick="setLanguage('fr')" title="French">🇫🇷</button>
+            <button onclick="setLanguage('it')" title="Italian">🇮🇹</button>
+            <button onclick="setLanguage('es')" title="Spanish">🇪🇸</button>
+            <button onclick="setLanguage('pl')" title="Polish">🇵🇱</button>
+            <button onclick="setLanguage('ro')" title="Romanian">🇷🇴</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="max-w-3xl mx-auto px-4 py-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-accent" data-i18n="hero_title">
+            Would you give your ID card to login to Instagram or to play a round of CS2?
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 font-medium" data-i18n="hero_subtitle">
+            If the <span class="text-white font-bold underline decoration-yellow-400">EU Kids Act</span> becomes law you will be forced to.
+        </p>
+    </header>
+
+    <!-- Petition Section -->
+    <section class="max-w-3xl mx-auto px-4 py-8 text-center glass-panel rounded-xl mb-12">
+        <div class="flex items-start gap-4 text-left mb-6">
+            <span class="text-4xl">➡️</span>
+            <p class="text-lg text-gray-300 font-medium" data-i18n="petition_desc">
+                You can help stop this by visiting the website below and signing its EU recognised petition against mandatory ID & age checks on the internet:
             </p>
-        </header>
+        </div>
+        
+        <a href="https://eci.ec.europa.eu/066/public/#/screen/home" target="_blank" class="inline-block bg-accent font-bold text-xl py-4 px-8 rounded shadow-lg transform hover:scale-105 transition mb-8" data-i18n="petition_btn">
+            Visit the petition!
+        </a>
 
-        <section id="action" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-800">
+        <!-- Progress Bar -->
+        <div class="w-full max-w-xl mx-auto">
+            <p class="text-gray-300 font-bold mb-2 flex items-center justify-center gap-2">
+                <span id="sigCountDisplay" class="text-accent text-xl">0</span> 
+                <span data-i18n="verified_sigs">verified signatures towards the 1 million goal!</span>
+            </p>
+            <div class="w-full bg-gray-700 rounded-full h-6 border border-gray-600 overflow-hidden relative">
+                <div id="sigProgressBar" class="bg-accent h-6 progress-bar-fill relative" style="width: 0%">
+                    <div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 20px);"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="max-w-3xl mx-auto px-4 py-8 text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-accent mb-4" data-i18n="share_title">You want to help even more?</h2>
+        <div class="flex items-start gap-4 text-left mb-6">
+            <span class="text-4xl">➡️</span>
+            <p class="text-lg text-gray-300 font-medium" data-i18n="share_desc">
+                Share this petition so that your friends and team-mates can learn about this cause and support it too!
+            </p>
+        </div>
+        
+        <div class="relative inline-block text-left" id="shareDropdownContainer">
+            <button onclick="toggleShareMenu()" class="bg-accent text-black font-bold py-3 px-6 rounded shadow-md hover:bg-yellow-500 transition flex items-center gap-2">
+                <span class="text-xl">🔗</span> <span data-i18n="share_btn">Share</span> <span>⌄</span>
+            </button>
             
-            <!-- Direct Email Action -->
-            <div class="flex flex-col md:flex-row gap-6 items-start mb-16">
-                <div class="hidden md:flex text-campaign-yellow text-6xl mt-2 drop-shadow-lg shadow-campaign-yellow">
-                    <!-- Arrow right SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="drop-shadow-[0_4px_6px_rgba(255,204,0,0.5)]"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </div>
-                <div class="flex-1 w-full text-center md:text-left">
-                    <h3 class="text-2xl font-bold text-campaign-yellow mb-2">Send a pre-written email to all of your country's MEPs'</h3>
-                    <p class="text-gray-300 text-lg mb-8">by selecting your country and pressing this button:</p>
-                    
-                    <div class="flex flex-col items-center md:items-start max-w-md mx-auto md:mx-0 gap-6">
-                        <div class="relative w-full">
-                            <select id="countrySelect" class="w-full appearance-none bg-campaign-dark border-2 border-campaign-yellow text-white py-4 px-6 rounded-lg text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-campaign-yellow cursor-pointer">
-                                <option value="" disabled selected>Select your country</option>
-                                <!-- JS will populate countries here -->
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-campaign-yellow">
-                                <svg class="fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                            </div>
-                        </div>
-                        
-                        <a id="mailtoBtn" href="#" class="w-full bg-campaign-yellow text-black font-black text-xl py-4 px-8 rounded-lg shadow-[0_6px_0_#b38f00] hover:translate-y-1 hover:shadow-[0_2px_0_#b38f00] transition-all flex items-center justify-center gap-3 opacity-50 cursor-not-allowed" onclick="checkCountrySelection(event)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                            Email your MEPs'
-                        </a>
-                    </div>
+            <div id="shareMenu" class="hidden absolute left-0 mt-2 w-56 rounded-md shadow-lg glass-panel ring-1 ring-black ring-opacity-5 z-50">
+                <div class="py-1" role="menu">
+                    <button onclick="sharePlatform('whatsapp')" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">📱 WhatsApp</button>
+                    <button onclick="sharePlatform('telegram')" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">✈️ Telegram</button>
+                    <button onclick="sharePlatform('twitter')" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">🐦 Twitter / X</button>
+                    <button onclick="sharePlatform('messenger')" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">💬 Messenger</button>
+                    <button onclick="sharePlatform('discord')" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">🎮 Discord (Copy Link)</button>
+                    <button onclick="sharePlatform('instagram')" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">📸 Instagram (Copy Link)</button>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Manual Copy Action -->
-            <div class="flex flex-col md:flex-row gap-6 items-start mt-20">
-                <div class="hidden md:flex text-campaign-yellow text-6xl mt-2 drop-shadow-lg shadow-campaign-yellow">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="drop-shadow-[0_4px_6px_rgba(255,204,0,0.5)]"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </div>
-                <div class="flex-1 w-full">
-                    <h3 class="text-2xl font-bold text-campaign-yellow mb-8 text-center md:text-left">Or copy the message and manually email it yourself:</h3>
-                    
-                    <div class="space-y-6">
-                        <!-- To Field -->
-                        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                            <label class="w-20 font-bold text-white text-lg">To:</label>
-                            <div class="relative flex-1 w-full">
-                                <input type="text" id="copyTo" readonly value="[Please select a country first]" class="w-full bg-campaign-dark border border-campaign-yellow text-gray-300 py-3 px-4 rounded-md focus:outline-none">
-                            </div>
-                            <button onclick="copyToClipboard('copyTo', this)" class="w-full sm:w-auto bg-campaign-yellow text-black font-bold py-3 px-6 rounded-md shadow-[0_4px_0_#b38f00] hover:translate-y-0.5 hover:shadow-[0_2px_0_#b38f00] transition-all">COPY</button>
-                        </div>
+    <!-- Email Section -->
+    <section class="max-w-3xl mx-auto px-4 py-8 mb-12">
+        <div class="flex items-start gap-4 mb-6">
+            <span class="text-4xl text-accent">➡️</span>
+            <p class="text-lg font-bold text-gray-300" data-i18n="email_desc">
+                Send a pre-written email to all of your country's Members of the European Parliament asking them to vote against mandatory ID & age checks on the internet:
+            </p>
+        </div>
 
-                        <!-- Subject Field -->
-                        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                            <label class="w-20 font-bold text-white text-lg">Subject:</label>
-                            <div class="relative flex-1 w-full">
-                                <input type="text" id="copySubject" readonly value="[Please select a country first]" class="w-full bg-campaign-dark border border-campaign-yellow text-gray-300 py-3 px-4 rounded-md focus:outline-none">
-                            </div>
-                            <button onclick="copyToClipboard('copySubject', this)" class="w-full sm:w-auto bg-campaign-yellow text-black font-bold py-3 px-6 rounded-md shadow-[0_4px_0_#b38f00] hover:translate-y-0.5 hover:shadow-[0_2px_0_#b38f00] transition-all">COPY</button>
-                        </div>
+        <div class="glass-panel p-6 rounded-xl flex flex-col gap-4 max-w-md mx-auto">
+            <select id="countrySelect" onchange="generateEmail()" class="w-full bg-gray-900 border border-gray-600 text-white rounded p-3 focus:outline-none focus:border-accent">
+                <option value="" disabled selected data-i18n="select_country">Select your country ⌄</option>
+                <option value="Austria">Austria</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Bulgaria">Bulgaria</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Cyprus">Cyprus</option>
+                <option value="Czechia">Czechia</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Greece">Greece</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Italy">Italy</option>
+                <option value="Latvia">Latvia</option>
+                <option value="Lithuania">Lithuania</option>
+                <option value="Luxembourg">Luxembourg</option>
+                <option value="Malta">Malta</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Poland">Poland</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Romania">Romania</option>
+                <option value="Slovakia">Slovakia</option>
+                <option value="Slovenia">Slovenia</option>
+                <option value="Spain">Spain</option>
+                <option value="Sweden">Sweden</option>
+            </select>
 
-                        <!-- Body Field -->
-                        <div class="flex flex-col sm:flex-row gap-4 items-start">
-                            <label class="w-20 font-bold text-white text-lg pt-3">Body:</label>
-                            <div class="relative flex-1 w-full">
-                                <textarea id="copyBody" readonly rows="8" class="w-full bg-campaign-dark border border-campaign-yellow text-gray-300 py-3 px-4 rounded-md focus:outline-none resize-none">[Please select a country first]</textarea>
-                            </div>
-                            <button onclick="copyToClipboard('copyBody', this)" class="w-full sm:w-auto bg-campaign-yellow text-black font-bold py-3 px-6 rounded-md shadow-[0_4px_0_#b38f00] hover:translate-y-0.5 hover:shadow-[0_2px_0_#b38f00] transition-all sm:mt-0 mt-2">COPY</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <input type="text" id="userName" onkeyup="generateEmail()" placeholder="Write your name: _" class="w-full bg-gray-900 border border-gray-600 text-white rounded p-3 focus:outline-none focus:border-accent" data-i18n-placeholder="placeholder_name">
 
-        <section id="about" class="bg-campaign-gray py-20 mt-12 border-y border-gray-800">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center gap-4 mb-8">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    <h2 class="text-3xl md:text-4xl font-black underline decoration-campaign-yellow decoration-4 underline-offset-8 text-white">What is the EU Kids Act?</h2>
-                </div>
-                
-                <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-12">
-                    The EU Kids act is a proposed law of the European Union that will force game stores like Steam, Playstation & Xbox stores and even the app store on your phone to require strict age verification for selling online games with a 16+ rating. Therefore you will have to verify your age with official documents via a European Digital Identity Wallet if you want to play online games or even access social media freely.
-                </p>
+            <a id="mailtoBtn" href="#" class="w-full text-center bg-accent font-bold py-3 px-6 rounded shadow-md pointer-events-none opacity-50 flex justify-center items-center gap-2">
+                <span class="text-xl">✉️</span> <span data-i18n="email_btn">Email your MEPs' !</span>
+            </a>
+        </div>
+    </section>
 
-                <div class="flex items-center gap-4 mb-6 mt-16">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    <h3 class="text-2xl font-bold text-white">Why is this law a threat for the EU gaming community?</h3>
-                </div>
-                
-                <ul class="space-y-6 text-gray-300 text-lg ml-2 md:ml-12 list-none">
-                    <li class="flex gap-4">
-                        <span class="text-campaign-yellow font-bold text-xl">1)</span>
-                        <div>
-                            <strong class="text-white">It destroys our right to privacy and digital freedom.</strong>
-                            <p class="mt-1 text-base text-gray-400">Mandatory ID checks online expose sensitive personal data to breaches and remove the ability to participate anonymously in digital spaces.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4">
-                        <span class="text-campaign-yellow font-bold text-xl">2)</span>
-                        <div>
-                            <strong class="text-white">It outlaws all private game servers.</strong>
-                            <p class="mt-1 text-base text-gray-400">Private communities and community-hosted servers lack the massive infrastructure to perform government-grade age verification, forcing them to shut down entirely.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4">
-                        <span class="text-campaign-yellow font-bold text-xl">3)</span>
-                        <div>
-                            <strong class="text-white">It drives small indie game creators out of the EU market.</strong>
-                            <p class="mt-1 text-base text-gray-400">The exorbitant financial and technical cost of implementing compliant age-verification systems acts as an impossible barrier to entry, crushing independent studios.</p>
-                        </div>
-                    </li>
-                </ul>
+    <!-- Manual Copy Section -->
+    <section class="max-w-3xl mx-auto px-4 mb-16">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl text-accent">➡️</span>
+            <p class="text-lg font-bold text-gray-300" data-i18n="copy_desc">
+                Or copy the message and manually email it yourself:
+            </p>
+        </div>
 
-                <div class="flex items-center gap-4 mb-6 mt-16">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    <h3 class="text-2xl font-bold text-white">What other ramifications does this law have?</h3>
-                </div>
-
-                <ul class="space-y-6 text-gray-300 text-lg ml-2 md:ml-12 list-none">
-                    <li class="flex gap-4">
-                        <span class="text-campaign-yellow font-bold text-xl">1)</span>
-                        <div>
-                            <strong class="text-white">The government acts as a gatekeeper of social media.</strong>
-                            <p class="mt-1 text-base text-gray-400">By mandating digital IDs, the state can track and log online behavior, creating a massive chilling effect on free speech, political dissent, and journalistic whistleblowing.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4">
-                        <span class="text-campaign-yellow font-bold text-xl">2)</span>
-                        <div>
-                            <strong class="text-white">Exclusion of marginalized communities.</strong>
-                            <p class="mt-1 text-base text-gray-400">Individuals without easy access to official digital IDs or those fleeing oppressive regimes will be completely cut off from essential digital communication and entertainment platforms.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="flex items-center gap-4 mb-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                <h2 class="text-3xl font-bold text-white underline decoration-campaign-yellow decoration-4 underline-offset-8">Frequently Asked Questions (FAQ's)</h2>
+        <div class="space-y-4">
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <label class="font-bold w-20" data-i18n="label_to">To:</label>
+                <input type="text" id="copyTo" readonly class="flex-1 bg-gray-900 border border-gray-600 rounded p-3 text-sm text-gray-400 w-full" value="[Select country to generate addresses]">
+                <button onclick="copyField('copyTo', this)" class="bg-gray-800 border border-gray-600 font-bold py-2 px-4 rounded hover:bg-gray-700 transition" data-i18n="btn_copy">COPY</button>
             </div>
             
-            <div class="space-y-4 ml-2 md:ml-12">
-                <!-- FAQ 1 -->
-                <details class="group bg-campaign-gray border border-gray-700 rounded-lg overflow-hidden transition-all duration-300 open:border-campaign-yellow">
-                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg text-white hover:text-campaign-yellow">
-                        <span>How does the email button work?</span>
-                        <span class="transition group-open:rotate-180 text-campaign-yellow text-2xl font-bold">+</span>
-                    </summary>
-                    <div class="text-gray-300 p-5 pt-0 text-base leading-relaxed border-t border-gray-700 group-open:border-campaign-yellow/30 mt-2">
-                        It generates a 'mailto:' link with pre-filled recipient addresses, a subject line, and an email body specifically tailored for the MEPs of your selected country. Clicking it automatically opens your device's default email client (like Apple Mail or Windows Mail) so you can review and instantly send the message.
-                    </div>
-                </details>
-
-                <!-- FAQ 2 -->
-                <details class="group bg-campaign-gray border border-gray-700 rounded-lg overflow-hidden transition-all duration-300 open:border-campaign-yellow">
-                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg text-white hover:text-campaign-yellow">
-                        <span>How can I manually send the email?</span>
-                        <span class="transition group-open:rotate-180 text-campaign-yellow text-2xl font-bold">+</span>
-                    </summary>
-                    <div class="text-gray-300 p-5 pt-0 text-base leading-relaxed border-t border-gray-700 group-open:border-campaign-yellow/30 mt-2">
-                        If the button doesn't work for you, select your country from the dropdown, then use the yellow 'COPY' buttons in the section below. You can individually copy the recipient email list, the subject line, and the body text, and paste them into your preferred web email provider (such as Gmail, Outlook, or ProtonMail).
-                    </div>
-                </details>
-
-                <!-- FAQ 3 -->
-                <details class="group bg-campaign-gray border border-gray-700 rounded-lg overflow-hidden transition-all duration-300 open:border-campaign-yellow">
-                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-lg text-white hover:text-campaign-yellow">
-                        <span>Where can I learn more about this law?</span>
-                        <span class="transition group-open:rotate-180 text-campaign-yellow text-2xl font-bold">+</span>
-                    </summary>
-                    <div class="text-gray-300 p-5 pt-0 text-base leading-relaxed border-t border-gray-700 group-open:border-campaign-yellow/30 mt-2">
-                        You can find official drafts and proposals on the European Commission's legislative observatory website. Additionally, several digital rights advocacy organizations, such as the Electronic Frontier Foundation (EFF) and European Digital Rights (EDRi), frequently publish detailed analyses of the privacy implications of digital ID and age verification mandates.
-                    </div>
-                </details>
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <label class="font-bold w-20" data-i18n="label_subject">Subject:</label>
+                <input type="text" id="copySub" readonly class="flex-1 bg-gray-900 border border-gray-600 rounded p-3 text-sm text-gray-400 w-full" value="[Select country to generate subject]">
+                <button onclick="copyField('copySub', this)" class="bg-gray-800 border border-gray-600 font-bold py-2 px-4 rounded hover:bg-gray-700 transition" data-i18n="btn_copy">COPY</button>
             </div>
-        </section>
 
-        <footer id="contact" class="bg-[#0a0a0a] py-16 border-t border-gray-800">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center gap-4 mb-8">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    <h2 class="text-2xl font-bold text-white">Contact us / Information</h2>
-                </div>
-                
-                <div class="ml-2 md:ml-12 space-y-6">
-                    <p class="text-xl text-gray-300">
-                        Email: <a href="mailto:info@stoptheeukidsact.com" class="text-campaign-yellow hover:underline">info@stoptheeukidsact.com</a>
-                    </p>
-
-                    <div class="bg-campaign-gray border border-gray-700 p-6 rounded-lg shadow-lg">
-                        
-                    </div>
-
-                    <p class="text-gray-400 text-sm mt-8">
-                        This websites code is open source and can be found at this Git Hub repository: 
-                        <a href="https://github.com/ikkns/eukidsactwebsite" class="text-campaign-yellow hover:underline ml-1">https://github.com/ikkns/eukidsactwebsite</a>
-                    </p>
-                </div>
+            <div class="flex flex-col md:flex-row items-start gap-4">
+                <label class="font-bold w-20 pt-3" data-i18n="label_body">Body:</label>
+                <textarea id="copyBody" readonly rows="8" class="flex-1 bg-gray-900 border border-gray-600 rounded p-3 text-sm text-gray-400 w-full resize-none">[Select country & write your name to generate body]</textarea>
+                <button onclick="copyField('copyBody', this)" class="bg-gray-800 border border-gray-600 font-bold py-2 px-4 rounded hover:bg-gray-700 transition h-11" data-i18n="btn_copy">COPY</button>
             </div>
-        </footer>
-    </main>
+        </div>
+    </section>
+
+    <!-- Info Sections -->
+    <div class="border-t border-gray-800 my-10"></div>
+
+    <section id="info" class="max-w-3xl mx-auto px-4 py-8 text-gray-300 space-y-6">
+        <h2 class="text-3xl font-extrabold text-white mb-6 flex items-center gap-3"><span class="text-accent">➡️</span> <span data-i18n="what_title">What exactly is the EU Kids Act?</span></h2>
+        <p data-i18n="what_p1">The 'EU Kids Act' is a proposed law aiming to make the internet 'Child friendly'. The law suggests that this goal must be achieved via age-gating and moderating digital platforms by implementing governmental age checks with official identifying documents on the internet.</p>
+        <p data-i18n="what_p2">Without verification via official documents your access will be blocked or restricted in:</p>
+        <div class="flex flex-wrap gap-4 font-bold text-white mb-4">
+            <span class="glass-panel py-2 px-4 rounded">Social Media</span>
+            <span class="glass-panel py-2 px-4 rounded">Online Gaming</span>
+            <span class="glass-panel py-2 px-4 rounded">AI Chatbots</span>
+        </div>
+        <p><span data-i18n="what_p3">You can take a look at the full text of this proposed legislation on the European Union's</span> <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52026PC0681" target="_blank" class="text-accent underline hover:text-white transition" data-i18n="what_link">official website for it</a>.</p>
+    </section>
+
+    <section id="impact" class="max-w-3xl mx-auto px-4 py-8 text-gray-300 space-y-8">
+        <h2 class="text-3xl font-extrabold text-white mb-6 flex items-center gap-3"><span class="text-accent">➡️</span> <span data-i18n="impact_title">How does this law affect us?</span></h2>
+        <div>
+            <h3 class="text-xl font-bold text-white mb-2">• <span class="underline decoration-gray-500" data-i18n="impact_h1">It compromises our digital liberties</span></h3>
+            <p data-i18n="impact_d1">Having the government act as a guard at the gates of the internet could prove to be a slippery slope against free speech on social media and basic online privacy.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold text-white mb-2">• <span class="underline decoration-gray-500" data-i18n="impact_h2">It un-necessarily puts our identifying information at risk</span></h3>
+            <p data-i18n="impact_d2">Forcing citizens to link official government identification to internet services creates a massive target for cyberattacks, a vulnerability already demonstrated when security researchers successfully hacked the EU's 2 million € 'zero knowledge' age verification app twice within three months of its launch.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold text-white mb-2">• <span class="underline decoration-gray-500" data-i18n="impact_h3">It places an age-lock for everyone</span></h3>
+            <p data-i18n="impact_d3">Getting access to social media, buying a game on Steam or the Playstation & Xbox stores, playing online games, using an AI chatbot are all going to be either heavily restricted or blocked by default for anyone that isn't willing to hand over his ID.</p>
+        </div>
+    </section>
+
+    <section id="faq" class="max-w-3xl mx-auto px-4 py-8">
+        <h2 class="text-3xl font-extrabold text-white mb-6 flex items-center gap-3"><span class="text-accent">➡️</span> <span data-i18n="faq_title">Frequently Asked Questions (FAQ's)</span></h2>
+        <div class="space-y-4">
+            <details class="glass-panel rounded group">
+                <summary class="font-bold p-4 cursor-pointer flex justify-between items-center text-white">
+                    <span data-i18n="faq_q1">How does the email button work?</span>
+                    <span class="text-accent text-xl group-open:rotate-45 transition">+</span>
+                </summary>
+                <div class="p-4 text-gray-300 border-t border-gray-700" data-i18n="faq_a1">It generates a pre-formatted email in your device's default mail app using a secure 'mailto:' link. We do not track or store any data.</div>
+            </details>
+            <details class="glass-panel rounded group">
+                <summary class="font-bold p-4 cursor-pointer flex justify-between items-center text-white">
+                    <span data-i18n="faq_q2">How can I manually send the email?</span>
+                    <span class="text-accent text-xl group-open:rotate-45 transition">+</span>
+                </summary>
+                <div class="p-4 text-gray-300 border-t border-gray-700" data-i18n="faq_a2">Select your country and write your name in the boxes above. Then scroll down to the 'Copy' section. Click copy on the To, Subject, and Body fields and paste them into Gmail, Outlook, or whatever mail provider you use!</div>
+            </details>
+            <details class="glass-panel rounded group">
+                <summary class="font-bold p-4 cursor-pointer flex justify-between items-center text-white">
+                    <span data-i18n="faq_q3">Where can I learn more about this law?</span>
+                    <span class="text-accent text-xl group-open:rotate-45 transition">+</span>
+                </summary>
+                <div class="p-4 text-gray-300 border-t border-gray-700" data-i18n="faq_a3">Check the links provided in the 'What exactly is the EU Kids Act?' section, and read coverage from digital rights organizations like the EFF and EDRi.</div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-3xl mx-auto px-4 py-12 mb-12">
+        <h2 class="text-2xl font-extrabold text-white mb-6 flex items-center gap-3"><span class="text-accent">➡️</span> <span data-i18n="footer_title">Contact us / Information</span></h2>
+        <p class="text-gray-400 mb-6 font-mono text-sm">Email: contact@stoptheeukidsact.com</p>
+        <div class="glass-panel p-6 rounded-xl text-gray-300 mb-6">
+            <p data-i18n="footer_box1">This is a student made website aiming to support the fight against ID & age verification in the internet. The petition featured is from the 'StopKillingTheInternet' European citizens initiative. Please support them!</p>
+        </div>
+        <p class="text-gray-400 text-sm mb-4">
+            <span data-i18n="footer_repo">This websites code is open source and can be found at this GitHub repository:</span> 
+            <a href="https://github.com/ikkns/eukidsactwebsite" target="_blank" class="text-accent underline">github.com/ikkns/eukidsactwebsite</a>
+        </p>
+        <div class="glass-panel p-6 rounded-xl text-gray-300 text-center font-bold">
+            <p data-i18n="footer_box2">Want this site in your language? Send us your translation in our github repo!</p>
+        </div>
+    </footer>
 
     <script>
-        // Array of all 27 EU Member States
-        const euCountries = [
-            "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic",
-            "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary",
-            "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands",
-            "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"
-        ];
+        const currentSignatures = 45000; 
+        const petitionGoal = 1000000;
 
-        // Populate dropdown
-        const selectElement = document.getElementById('countrySelect');
-        euCountries.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country;
-            option.textContent = country;
-            selectElement.appendChild(option);
-        });
-
-        // Function to handle link click prevention if disabled
-        function checkCountrySelection(e) {
-            const btn = document.getElementById('mailtoBtn');
-            if (btn.classList.contains('cursor-not-allowed')) {
-                e.preventDefault();
-                // Brief shake effect to indicate interaction needed
-                const select = document.getElementById('countrySelect');
-                select.classList.add('translate-x-1');
-                setTimeout(() => select.classList.remove('translate-x-1'), 100);
-                setTimeout(() => select.classList.add('-translate-x-1'), 200);
-                setTimeout(() => select.classList.remove('-translate-x-1'), 300);
+        const i18n = {
+            en: {
+                nav_home: "Home", nav_impact: "How does this law affect us?", nav_faq: "FAQs", nav_info: "Info",
+                select_language: "Select your language:", hero_title: "Would you give your ID card to login to Instagram or to play a round of CS2?",
+                hero_subtitle: "If the <span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> becomes law you will be forced to.",
+                petition_desc: "You can help stop this by visiting the website below and signing its EU recognised petition against mandatory ID & age checks on the internet:", petition_btn: "Visit the petition!", verified_sigs: "verified signatures towards the 1 million goal!",
+                share_title: "You want to help even more?", share_desc: "Share this petition so that your friends and team-mates can learn about this cause and support it too!", share_btn: "Share",
+                email_desc: "Send a pre-written email to all of your country's Members of the European Parliament asking them to vote against mandatory ID & age checks on the internet:", select_country: "Select your country ⌄", email_btn: "Email your MEPs' !",
+                copy_desc: "Or copy the message and manually email it yourself:", label_to: "To:", label_subject: "Subject:", label_body: "Body:", btn_copy: "COPY",
+                what_title: "What exactly is the EU Kids Act?", what_p1: "The 'EU Kids Act' is a proposed law aiming to make the internet 'Child friendly'. The law suggests that this goal must be achieved via age-gating and moderating digital platforms by implementing governmental age checks with official identifying documents on the internet.", what_p2: "Without verification via official documents your access will be blocked or restricted in:", what_p3: "You can take a look at the full text of this proposed legislation on the European Union's", what_link: "official website for it",
+                impact_title: "How does this law affect us?", impact_h1: "It compromises our digital liberties", impact_d1: "Having the government act as a guard at the gates of the internet could prove to be a slippery slope against free speech on social media and basic online privacy.", impact_h2: "It un-necessarily puts our identifying information at risk", impact_d2: "Forcing citizens to link official government identification to internet services creates a massive target for cyberattacks, a vulnerability already demonstrated when security researchers successfully hacked the EU's 2 million € 'zero knowledge' age verification app twice within three months of its launch.", impact_h3: "It places an age-lock for everyone", impact_d3: "Getting access to social media, buying a game on Steam or the Playstation & Xbox stores, playing online games, using an AI chatbot are all going to be either heavily restricted or blocked by default for anyone that isn't willing to hand over his ID.",
+                faq_title: "Frequently Asked Questions (FAQ's)", faq_q1: "How does the email button work?", faq_a1: "It generates a pre-formatted email in your device's default mail app using a secure 'mailto:' link. We do not track or store any data.", faq_q2: "How can I manually send the email?", faq_a2: "Select your country and write your name in the boxes above. Then scroll down to the 'Copy' section. Click copy on the To, Subject, and Body fields and paste them into Gmail, Outlook, or whatever mail provider you use!", faq_q3: "Where can I learn more about this law?", faq_a3: "Check the links provided in the 'What exactly is the EU Kids Act?' section, and read coverage from digital rights organizations like the EFF and EDRi.",
+                footer_title: "Contact us / Information", footer_box1: "This is a student made website aiming to support the fight against ID & age verification in the internet. The petition featured is from the 'StopKillingTheInternet' European citizens initiative. Please support them!", footer_repo: "This websites code is open source and can be found at this GitHub repository:", footer_box2: "Want this site in your language? Send us your translation in our github repo!", placeholder_name: "Write your name: _"
+            },
+            gr: {
+                nav_home: "Αρχική", nav_impact: "Πώς μας επηρεάζει αυτός ο νόμος;", nav_faq: "FAQs", nav_info: "Πληροφορίες",
+                select_language: "Επιλέξτε τη γλώσσα σας:", hero_title: "Θα δίνατε την ταυτότητά σας για να συνδεθείτε στο Instagram ή για να παίξετε ένα match CS2;", hero_subtitle: "Αν το <span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> γίνει νόμος, θα αναγκαστείτε να το κάνετε.",
+                petition_desc: "Μπορείτε να βοηθήσετε να σταματήσει αυτό επισκέπτοντας την παρακάτω ιστοσελίδα και υπογράφοντας το αναγνωρισμένο από την ΕΕ Petition ενάντια στους υποχρεωτικούς ελέγχους ταυτοπροσωπίας και ηλικίας στο διαδίκτυο:", petition_btn: "Επισκεφθείτε το Petition!", verified_sigs: "επαληθευμένες υπογραφές για τον στόχο του 1 εκατομμυρίου!",
+                share_title: "Θέλετε να βοηθήσετε ακόμα περισσότερο;", share_desc: "Κάντε Share αυτό το Petition ώστε οι φίλοι και οι συμπαίκτες σας να μάθουν για αυτόν τον σκοπό και να τον υποστηρίξουν κι αυτοί!", share_btn: "Share",
+                email_desc: "Στείλτε ένα έτοιμο email σε όλους τους Ευρωβουλευτές της χώρας σας ζητώντας τους να καταψηφίσουν τους υποχρεωτικούς ελέγχους ταυτότητας και ηλικίας στο διαδίκτυο:", select_country: "Επιλέξτε τη χώρα σας ⌄", email_btn: "Στείλτε email στους Ευρωβουλευτές σας!", copy_desc: "Ή αντιγράψτε το μήνυμα και στείλτε το email χειροκίνητα μόνοι σας:", label_to: "Προς:", label_subject: "Θέμα:", label_body: "Κείμενο:", btn_copy: "ΑΝΤΙΓΡΑΦΗ",
+                what_title: "Τι ακριβώς είναι το EU Kids Act;", what_p1: "To 'EU Kids Act' είναι ένας προτεινόμενος νόμος που στοχεύει να κάνει το διαδίκτυο 'φιλικό προς τα παιδιά'. Ο νόμος προτείνει ότι αυτός ο στόχος σχεδιάζεται να επιτευχθεί μέσω ηλικιακών περιορισμών και ελέγχου των ψηφιακών πλατφορμών, εφαρμόζοντας κυβερνητικούς ελέγχους ηλικίας με επίσημα έγγραφα ταυτοποίησης στο διαδίκτυο.", what_p2: "Χωρίς επαλήθευση μέσω επίσημων εγγράφων η πρόσβασή σας θα μπλοκαριστεί ή θα περιοριστεί σε:", what_p3: "Μπορείτε να ρίξετε μια ματιά στο πλήρες κείμενο αυτής της προτεινόμενης νομοθεσίας στον", what_link: "επίσημο ιστότοπο της Ευρωπαϊκής Ένωσης",
+                impact_title: "Πώς μας επηρεάζει αυτός ο νόμος;", impact_h1: "Θέτει σε κίνδυνο τις ψηφιακές μας ελευθερίες", impact_d1: "Το να λειτουργεί η κυβέρνηση ως φύλακας στις πύλες του διαδικτύου θα μπορούσε να αποδειχθεί επικίνδυνο για την ελευθερία του λόγου στα social media και τη βασική διαδικτυακή μας ιδιωτικότητα.", impact_h2: "Θέτει άσκοπα σε κίνδυνο τα προσωπικά δεδομένα ταυτοποίησης μας", impact_d2: "Ο εξαναγκασμός των πολιτών να συνδέσουν την επίσημη κρατική ταυτοποίηση με διαδικτυακές υπηρεσίες δημιουργεί έναν τεράστιο στόχο για κυβερνοεπιθέσεις, ένα τρωτό σημείο το οποίο έχει ήδη αποκαλυφθεί...", impact_h3: "Επιβάλλει ηλικιακό κλείδωμα στο ίντερνετ για όλους", impact_d3: "Η απόκτηση πρόσβασης στα social media, η αγορά ενός παιχνιδιού στο Steam ή στα καταστήματα Playstation & Xbox, το online gaming, και η χρήση AI chatbots θα περιοριστούν σε μεγάλο βαθμό...",
+                faq_title: "FAQS", faq_q1: "Πώς λειτουργεί το κουμπί email;", faq_a1: "Δημιουργεί ένα έτοιμο email στην προεπιλεγμένη εφαρμογή αλληλογραφίας της συσκευής σας.", faq_q2: "Πώς μπορώ να στείλω χειροκίνητα το email;", faq_a2: "Αντιγράψτε τα πεδία και επικολλήστε τα στο Gmail ή στο Outlook σας.", faq_q3: "Πού μπορώ να μάθω περισσότερα για αυτόν τον νόμο;", faq_a3: "Ελέγξτε τους συνδέσμους που παρέχονται παραπάνω.",
+                footer_title: "Επικοινωνήστε μαζί μας / Πληροφορίες", footer_box1: "Αυτός είναι ένας ιστότοπος φτιαγμένος από μαθητές που στοχεύει να υποστηρίξει τον αγώνα ενάντια στην επαλήθευση ταυτότητας. Το Petition προέρχεται από την πρωτοβουλία 'StopKillingTheInternet'.", footer_repo: "Ο κώδικας αυτού του ιστότοπου είναι ανοιχτού κώδικα στο GitHub repository:", footer_box2: "Θέλετε αυτόν τον ιστότοπο στη γλώσσα σας; Στείλτε μας τη μετάφρασή σας!", placeholder_name: "Γράψτε το όνομά σας: _"
+            },
+            de: {
+                nav_home: "Startseite", nav_impact: "Wie betrifft uns dieses Gesetz?", nav_faq: "FAQs", nav_info: "Info",
+                select_language: "Wählen Sie Ihre Sprache:", hero_title: "Würdest du deinen Personalausweis vorzeigen, um dich bei Instagram anzumelden oder eine Runde CS2 zu spielen?", hero_subtitle: "Wenn der <span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> Gesetz wird, wirst du dazu gezwungen sein.",
+                petition_desc: "Du kannst helfen, dies zu stoppen, indem du die untenstehende Website besuchst und die EU-anerkannte Petition gegen obligatorische Identitäts- und Altersüberprüfungen im Internet unterschreibst:", petition_btn: "Besuche die Petition!", verified_sigs: "verifizierte Unterschriften auf dem Weg zum Ziel von 1 Million!",
+                share_title: "Du möchtest noch mehr helfen?", share_desc: "Mache ein Share dieser Petition, damit deine Freunde und Teamkollegen von dieser Sache erfahren und sie ebenfalls unterstützen können!", share_btn: "Share",
+                email_desc: "Sende eine vorgefertigte email an alle Abgeordneten des Europäischen Parlaments deines Landes und fordere sie auf, gegen obligatorische Identitäts- und Altersüberprüfungen im Internet zu stimmen:", select_country: "Wähle dein Land ⌄", email_btn: "Sende eine email an deine MdEPs!", copy_desc: "Oder kopiere die Nachricht und sende die email manuell selbst:", label_to: "An:", label_subject: "Betreff:", label_body: "Nachrichtentext:", btn_copy: "KOPIEREN",
+                what_title: "Was genau ist der EU Kids Act?", what_p1: "Der 'EU Kids Act' ist ein Gesetzentwurf, der darauf abzielt, das Internet 'kinderfreundlich' zu machen. Das Gesetz schlägt vor, dass dieses Ziel durch Altersbeschränkungen und die Moderation digitaler Plattformen erreicht werden muss...", what_p2: "Ohne Verifizierung durch offizielle Dokumente wird dein Zugang blockiert oder eingeschränkt in:", what_p3: "Du kannst dir den vollständigen Text dieser vorgeschlagenen Gesetzgebung auf der", what_link: "offiziellen Website der Europäischen Union dafür ansehen.",
+                impact_title: "Wie betrifft uns dieses Gesetz?", impact_h1: "Es gefährdet unsere digitalen Freiheiten", impact_d1: "Dass die Regierung als Wächter an den Toren des Internets agiert, könnte sich als schiefer Hang gegen die freie Meinungsäußerung auf social media und die grundlegende Online-Privatsphäre erweisen.", impact_h2: "Es gefährdet unnötigerweise unsere Identifikationsdaten", impact_d2: "Bürger zu zwingen, offizielle staatliche Ausweise mit Internetdiensten zu verknüpfen, schafft ein massives Ziel für Cyberangriffe...", impact_h3: "Es richtet eine Alterssperre für alle ein", impact_d3: "Der Zugang zu social media, der Kauf eines Spiels auf Steam oder in den Playstation & Xbox Stores, online gaming, und die Nutzung von AI chatbots werden... stark eingeschränkt oder blockiert.",
+                faq_title: "FAQS", faq_q1: "Wie funktioniert der email-Button?", faq_a1: "Er generiert eine vorformatierte E-Mail in der Standard-Mail-App deines Geräts.", faq_q2: "Wie kann ich die email manuell senden?", faq_a2: "Wähle dein Land aus, schreibe deinen Namen in die Felder oben und kopiere die Nachricht.", faq_q3: "Wo kann ich mehr über dieses Gesetz erfahren?", faq_a3: "Überprüfe die Links im obigen Abschnitt.",
+                footer_title: "Kontaktiere uns / Informationen", footer_box1: "Dies ist eine von Studenten erstellte Website, die den Kampf gegen die Identitätsüberprüfung unterstützt. Die Petition stammt von der Initiative 'StopKillingTheInternet'.", footer_repo: "Der Code dieser Website ist Open Source in diesem GitHub repository zu finden:", footer_box2: "Möchtest du diese Seite in deiner Sprache? Sende uns deine Übersetzung!", placeholder_name: "Schreibe deinen Namen: _"
+            },
+            fr: {
+                nav_home: "Accueil", nav_impact: "Comment cette loi nous affecte-t-elle ?", nav_faq: "FAQs", nav_info: "Infos",
+                select_language: "Sélectionnez votre langue :", hero_title: "Donneriez-vous votre carte d'identité pour vous connecter à Instagram ou pour jouer une partie de CS2 ?", hero_subtitle: "Si le <span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> devient loi, vous y serez forcé.",
+                petition_desc: "Vous pouvez aider à arrêter cela en visitant le site Web ci-dessous et en signant sa Petition reconnue par l'UE contre les contrôles obligatoires d'identité et d'âge sur Internet:", petition_btn: "Visitez la Petition!", verified_sigs: "signatures vérifiées vers l'objectif d'un million!",
+                share_title: "Vous voulez aider encore plus ?", share_desc: "Faites un Share de cette Petition pour que vos amis et coéquipiers puissent en apprendre davantage sur cette cause et la soutenir aussi !", share_btn: "Share",
+                email_desc: "Envoyez un email pré-écrit à tous les députés européens de votre pays pour leur demander de voter contre les contrôles obligatoires d'identité et d'âge sur Internet:", select_country: "Sélectionnez votre pays ⌄", email_btn: "Envoyez un email à vos députés !", copy_desc: "Ou copiez le message et envoyez l'email manuellement vous-même :", label_to: "À:", label_subject: "Sujet :", label_body: "Corps du message:", btn_copy: "COPIER",
+                what_title: "Qu'est-ce que le EU Kids Act exactement?", what_p1: "Le 'EU Kids Act' est un projet de loi visant à rendre Internet 'adapté aux enfants'. La loi suggère que cet objectif doit être atteint via des restrictions d'âge et la modération des plateformes numériques...", what_p2: "Sans vérification via des documents officiels, votre accès sera bloqué ou restreint sur :", what_p3: "Vous pouvez consulter le texte intégral de ce projet de loi sur le", what_link: "site officiel de l'Union européenne à ce sujet.",
+                impact_title: "Comment cette loi nous affecte-t-elle?", impact_h1: "Elle compromet nos libertés numériques", impact_d1: "Le fait que le gouvernement agisse comme un garde aux portes d'Internet pourrait s'avérer être une pente glissante contre la liberté d'expression sur les social media et la vie privée de base en ligne.", impact_h2: "Elle met inutilement en danger nos informations d'identification", impact_d2: "Forcer les citoyens à lier une pièce d'identité gouvernementale officielle aux services Internet crée une cible massive pour les cyberattaques...", impact_h3: "Elle impose un verrouillage par âge pour tout le monde", impact_d3: "Accéder aux social media, acheter un jeu sur Steam ou sur les boutiques Playstation & Xbox, faire du online gaming, utiliser des AI chatbots seront tous soit fortement restreints, soit bloqués...",
+                faq_title: "FAQS", faq_q1: "Comment fonctionne le bouton email ?", faq_a1: "Il génère un e-mail pré-formaté dans l'application de messagerie de votre appareil.", faq_q2: "Comment puis-je envoyer l'email manuellement ?", faq_a2: "Sélectionnez votre pays, écrivez votre nom et copiez le message.", faq_q3: "Où puis-je en apprendre davantage sur cette loi ?", faq_a3: "Consultez les liens fournis dans la section ci-dessus.",
+                footer_title: "Contactez-nous / Informations", footer_box1: "Il s'agit d'un site Web créé par des étudiants visant à soutenir la lutte contre la vérification de l'identité. La Petition provient de l'initiative 'StopKillingTheInternet'.", footer_repo: "Le code de ce site Web est open source et peut être trouvé sur ce GitHub repository:", footer_box2: "Vous voulez ce site dans votre langue ? Envoyez-nous votre traduction !", placeholder_name: "Écrivez votre nom: _"
+            },
+            it: {
+                nav_home: "Home", nav_impact: "Come ci riguarda questa legge?", nav_faq: "FAQs", nav_info: "Info",
+                select_language: "Seleziona la tua lingua:", hero_title: "Daresti la tua carta d'identità per accedere a Instagram o per giocare una partita a CS2?", hero_subtitle: "Se l'<span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> diventerà legge, sarai costretto a farlo.",
+                petition_desc: "Puoi aiutare a fermare tutto questo visitando il sito web qui sotto e firmando la sua Petition riconosciuta dall'UE contro i controlli obbligatori dell'identità e dell'età su Internet:", petition_btn: "Visita la Petition!", verified_sigs: "firme verificate verso l'obiettivo di 1 milione!",
+                share_title: "Vuoi aiutare ancora di più?", share_desc: "Fai un Share di questa Petition in modo che i tuoi amici e compagni di squadra possano conoscere questa causa e sostenerla a loro volta!", share_btn: "Share",
+                email_desc: "Invia un email precompilato a tutti i membri del Parlamento Europeo del tuo paese chiedendo loro di votare contro i controlli obbligatori dell'identità e dell'età su Internet:", select_country: "Seleziona il tuo paese ⌄", email_btn: "Invia un email ai tuoi eurodeputati!", copy_desc: "O copia il messaggio e invia l'email manualmente tu stesso:", label_to: "A:", label_subject: "Oggetto:", label_body: "Corpo del testo:", btn_copy: "COPIA",
+                what_title: "Cos'è esattamente l'EU Kids Act?", what_p1: "L' 'EU Kids Act' è una proposta di legge che mira a rendere Internet 'a misura di bambino'. La legge suggerisce che questo obiettivo deve essere raggiunto attraverso restrizioni legate all'età e la moderazione delle piattaforme digitali...", what_p2: "Senza verifica tramite documenti ufficiali, il tuo accesso sarà bloccato o limitato in:", what_p3: "Puoi dare un'occhiata al testo completo di questa proposta di legislazione sul", what_link: "sito web ufficiale dell'Unione Europea dedicato.",
+                impact_title: "Come ci riguarda questa legge?", impact_h1: "Compromette le nostre libertà digitali", impact_d1: "Avere il governo che agisce come una guardia ai cancelli di Internet potrebbe rivelarsi un pendio scivoloso contro la libertà di parola sui social media e la privacy online di base.", impact_h2: "Mette inutilmente a rischio le nostre informazioni identificative", impact_d2: "Costringere i cittadini a collegare un documento d'identità governativo ufficiale ai servizi Internet crea un enorme bersaglio per gli attacchi informatici...", impact_h3: "Pone un blocco per età per tutti", impact_d3: "Ottenere l'accesso ai social media, comprare un gioco su Steam o sugli store Playstation & Xbox, fare online gaming, usare AI chatbots saranno tutti pesantemente limitati o bloccati di default...",
+                faq_title: "FAQS", faq_q1: "Come funziona il pulsante email?", faq_a1: "Genera un'e-mail preformattata nell'app di posta predefinita del dispositivo.", faq_q2: "Come posso inviare l'email manualmente?", faq_a2: "Seleziona il tuo paese, scrivi il tuo nome e copia il testo nei campi sottostanti.", faq_q3: "Dove posso saperne di più su questa legge?", faq_a3: "Controlla i link forniti nella sezione precedente.",
+                footer_title: "Contattaci / Informazioni", footer_box1: "Questo è un sito web creato da studenti che mira a sostenere la lotta contro la verifica dell'identità. La Petition in evidenza proviene dall'iniziativa 'StopKillingTheInternet'.", footer_repo: "Il codice di questo sito web è open source e può essere trovato in questo GitHub repository:", footer_box2: "Vuoi questo sito nella tua lingua? Inviaci la tua traduzione nel nostro repository!", placeholder_name: "Scrivi il tuo nome: _"
+            },
+            es: {
+                nav_home: "Inicio", nav_impact: "¿Cómo nos afecta esta ley?", nav_faq: "FAQs", nav_info: "Información",
+                select_language: "Selecciona tu idioma:", hero_title: "¿Darías tu carné de identidad para iniciar sesión en Instagram o para jugar una partida de CS2?", hero_subtitle: "Si la <span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> se convierte en ley, estarás obligado a hacerlo.",
+                petition_desc: "Puedes ayudar a detener esto visitando el sitio web a continuación y firmando su Petition reconocida por la UE contra los controles obligatorios de identidad y edad en Internet:", petition_btn: "¡Visita la Petition!", verified_sigs: "firmas verificadas hacia el objetivo de 1 millón!",
+                share_title: "¿Quieres ayudar aún más?", share_desc: "¡Haz un Share de esta Petition para que tus amigos y compañeros de equipo puedan conocer esta causa y apoyarla también!", share_btn: "Share",
+                email_desc: "Envía un email preescrito a todos los miembros del Parlamento Europeo de tu país pidiéndoles que voten en contra de los controles obligatorios de identidad y edad en Internet:", select_country: "Selecciona tu país ⌄", email_btn: "¡Envía un email a tus eurodiputados!", copy_desc: "O copia el mensaje y envía el email manualmente tú mismo:", label_to: "Para:", label_subject: "Asunto:", label_body: "Cuerpo:", btn_copy: "COPIAR",
+                what_title: "¿Qué es exactamente la EU Kids Act?", what_p1: "La 'EU Kids Act' es una propuesta de ley que tiene como objetivo hacer que Internet sea 'amigable para los niños'. La ley sugiere que este objetivo debe lograrse mediante restricciones de edad y la moderación de las plataformas digitales...", what_p2: "Sin verificación mediante documentos oficiales, tu acceso será bloqueado o restringido en:", what_p3: "Puedes echar un vistazo al texto completo de esta legislación propuesta en el", what_link: "sitio web oficial de la Unión Europea para ello.",
+                impact_title: "¿Cómo nos afecta esta ley?", impact_h1: "Compromete nuestras libertades digitales", impact_d1: "Hacer que el gobierno actúe como guardia en las puertas de Internet podría resultar ser una pendiente resbaladiza contra la libertad de expresión en las social media y la privacidad básica en línea.", impact_h2: "Pone en riesgo innecesariamente nuestra información de identificación", impact_d2: "Obligar a los ciudadanos a vincular una identificación oficial del gobierno a los servicios de Internet crea un objetivo masivo para los ciberataques...", impact_h3: "Establece un bloqueo por edad para todos", impact_d3: "Obtener acceso a las social media, comprar un juego en Steam o en las tiendas de Playstation y Xbox, hacer online gaming, usar AI chatbots estarán fuertemente restringidos o bloqueados de forma predeterminada...",
+                faq_title: "FAQS", faq_q1: "¿Cómo funciona el botón de email?", faq_a1: "Genera un correo electrónico preformateado en la aplicación de correo de tu dispositivo.", faq_q2: "¿Cómo puedo enviar el email manualmente?", faq_a2: "Selecciona tu país, escribe tu nombre en los cuadros de arriba y copia el texto.", faq_q3: "¿Dónde puedo obtener más información sobre esta ley?", faq_a3: "Consulta los enlaces proporcionados en la sección anterior.",
+                footer_title: "Contáctanos / Información", footer_box1: "Este es un sitio web creado por estudiantes que tiene como objetivo apoyar la lucha contra la verificación de identidad y edad en Internet. La Petition destacada es de 'StopKillingTheInternet'.", footer_repo: "El código de este sitio web es de código abierto y se puede encontrar en este GitHub repository:", footer_box2: "¿Quieres este sitio en tu idioma? ¡Envíanos tu traducción!", placeholder_name: "Escribe tu nombre: _"
+            },
+            pl: {
+                nav_home: "Strona główna", nav_impact: "Jak to prawo wpływa na nas?", nav_faq: "FAQs", nav_info: "Informacje",
+                select_language: "Wybierz swój język:", hero_title: "Czy podałbyś swój dowód osobisty, aby zalogować się na Instagram lub zagrać rundę w CS2?", hero_subtitle: "Jeśli <span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> stanie się prawem, będziesz do tego zmuszony.",
+                petition_desc: "Możesz pomóc to powstrzymać, odwiedzając poniższą stronę internetową i podpisując uznawaną przez UE Petition przeciwko obowiązkowym weryfikacjom tożsamości i wieku w internecie:", petition_btn: "Odwiedź Petition!", verified_sigs: "zweryfikowanych podpisów w drodze do celu 1 miliona!",
+                share_title: "Chcesz pomóc jeszcze bardziej?", share_desc: "Zrób Share tej Petition, aby twoi przyjaciele i koledzy z drużyny mogli dowiedzieć się o tej sprawie i również ją wesprzeć!", share_btn: "Share",
+                email_desc: "Wyślij gotowy email do wszystkich posłów do Parlamentu Europejskiego ze swojego kraju, prosząc ich o głosowanie przeciwko obowiązkowym weryfikacjom tożsamości i wieku w internecie:", select_country: "Wybierz swój kraj ⌄", email_btn: "Wyślij email do swoich europosłów!", copy_desc: "Albo skopiuj wiadomość i wyślij email samodzielnie:", label_to: "Do:", label_subject: "Temat:", label_body: "Treść:", btn_copy: "KOPIUJ",
+                what_title: "Czym dokładnie jest EU Kids Act?", what_p1: "'EU Kids Act' to proponowana ustawa mająca na celu uczynienie internetu 'przyjaznym dla dzieci'. Prawo to sugeruje, że cel ten musi zostać osiągnięty poprzez ograniczenia wiekowe i moderowanie platform cyfrowych...", what_p2: "Bez weryfikacji za pomocą oficjalnych dokumentów twój dostęp zostanie zablokowany lub ograniczony w:", what_p3: "Możesz zapoznać się z pełnym tekstem tej proponowanej legislacji na", what_link: "oficjalnej stronie internetowej Unii Europejskiej na ten temat.",
+                impact_title: "Jak to prawo wpływa na nas?", impact_h1: "Zagraża naszym cyfrowym wolnościom", impact_d1: "Ustanowienie rządu jako strażnika u bram internetu może okazać się równią pochyłą przeciwko wolności słowa w social media i podstawowej prywatności w sieci.", impact_h2: "Niepotrzebnie naraża nasze dane identyfikacyjne na ryzyko", impact_d2: "Zmuszanie obywateli do łączenia oficjalnego dokumentu tożsamości wydanego przez państwo z usługami internetowymi tworzy ogromny cel dla cyberataków...", impact_h3: "Wprowadza blokadę wiekową dla każdego", impact_d3: "Uzyskanie dostępu do social media, zakup gry na Steamie lub w sklepach Playstation i Xbox, online gaming, korzystanie z AI chatbots - wszystko to będzie mocno ograniczone lub domyślnie zablokowane...",
+                faq_title: "FAQS", faq_q1: "Jak działa przycisk email?", faq_a1: "Generuje wstępnie sformatowaną wiadomość e-mail w domyślnej aplikacji.", faq_q2: "Jak mogę ręcznie wysłać email?", faq_a2: "Wybierz swój kraj, wpisz imię i skopiuj tekst do swojego klienta e-mail.", faq_q3: "Gdzie mogę dowiedzieć się więcej o tym prawie?", faq_a3: "Sprawdź linki podane w sekcji powyżej.",
+                footer_title: "Skontaktuj się z nami / Informacje", footer_box1: "Jest to strona internetowa stworzona przez studentów. Przedstawiona Petition pochodzi z europejskiej inicjatywy obywatelskiej 'StopKillingTheInternet'. Proszę, wesprzyjcie ich!", footer_repo: "Kod tej strony internetowej jest oprogramowaniem typu open source i można go znaleźć w tym GitHub repository:", footer_box2: "Chcesz mieć tę stronę w swoim języku? Wyślij nam swoje tłumaczenie w naszym GitHub repository!", placeholder_name: "Wpisz swoje imię: _"
+            },
+            ro: {
+                nav_home: "Acasă", nav_impact: "Cum ne afectează această lege?", nav_faq: "FAQs", nav_info: "Informații",
+                select_language: "Selectează-ți limba:", hero_title: "Ți-ai da buletinul pentru a te conecta la Instagram sau pentru a juca o rundă de CS2?", hero_subtitle: "Dacă <span class='text-white font-bold underline decoration-yellow-400'>EU Kids Act</span> devine lege, vei fi obligat să o faci.",
+                petition_desc: "Poți ajuta la oprirea acestui lucru vizitând site-ul de mai jos și semnând această Petition recunoscută de UE împotriva verificărilor obligatorii ale identității și vârstei pe internet:", petition_btn: "Vizitează Petition!", verified_sigs: "semnături verificate spre obiectivul de 1 milion!",
+                share_title: "Vrei să ajuți și mai mult?", share_desc: "Dă un Share la această Petition, astfel încât prietenii și coechipierii tăi să poată afla despre această cauză și să o susțină și ei!", share_btn: "Share",
+                email_desc: "Trimite un email prescris către toți membrii Parlamentului European din țara ta, cerându-le să voteze împotriva verificărilor obligatorii ale identității și vârstei pe internet:", select_country: "Selectează-ți țara ⌄", email_btn: "Trimite un email europarlamentarilor tăi!", copy_desc: "Sau copiază mesajul și trimite manual un email tu însuți:", label_to: "Către:", label_subject: "Subiect:", label_body: "Corp:", btn_copy: "COPIAZĂ",
+                what_title: "Ce este mai exact EU Kids Act?", what_p1: "'EU Kids Act' este o propunere de lege care vizează transformarea internetului într-un mediu 'prietenos pentru copii'. Legea sugerează că acest obiectiv trebuie atins prin restricționarea accesului pe criterii de vârstă și prin moderarea platformelor digitale...", what_p2: "Fără verificare prin documente oficiale, accesul tău va fi blocat sau restricționat în:", what_p3: "Poți arunca o privire la textul integral al acestei propuneri legislative pe", what_link: "site-ul oficial al Uniunii Europene pentru aceasta.",
+                impact_title: "Cum ne afectează această lege?", impact_h1: "Ne compromite libertățile digitale", impact_d1: "Faptul că guvernul acționează ca un paznic la porțile internetului s-ar putea dovedi a fi o pantă alunecoasă împotriva libertății de exprimare pe social media și a intimității de bază online.", impact_h2: "Ne pune în pericol în mod inutil informațiile de identificare", impact_d2: "Forțarea cetățenilor să lege un act de identitate guvernamental oficial de serviciile de internet creează o țintă masivă pentru atacurile cibernetice...", impact_h3: "Pune un blocaj de vârstă pentru toată lumea", impact_d3: "Obținerea accesului la social media, cumpărarea unui joc pe Steam sau în magazinele Playstation și Xbox, online gaming, utilizarea AI chatbots vor fi fie puternic restricționate, fie blocate implicit...",
+                faq_title: "FAQS", faq_q1: "Cum funcționează butonul de email?", faq_a1: "Generează un e-mail preformatat în aplicația de e-mail implicită a dispozitivului tău.", faq_q2: "Cum pot trimite manual un email?", faq_a2: "Selectează țara, scrie-ți numele și copiază textul.", faq_q3: "Unde pot afla mai multe despre această lege?", faq_a3: "Verifică linkurile din secțiunea de mai sus.",
+                footer_title: "Contactează-ne / Informații", footer_box1: "Acesta este un site web realizat de studenți, care urmărește să sprijine lupta împotriva verificării identității și vârstei pe internet. Această Petition provine de la inițiativa 'StopKillingTheInternet'.", footer_repo: "Codul acestui site web este open source și poate fi găsit în acest GitHub repository:", footer_box2: "Vrei acest site în limba ta? Trimite-ne traducerea ta în GitHub repository al nostru!", placeholder_name: "Scrie-ți numele: _"
             }
+        };
+
+        const emailContent = {
+            en: {
+                subjects: ["EU Kids Act: Protecting Children While Preserving Online Anonymity", "Citizen Concerns Regarding Identity Verification in the EU Kids Act", "Urging Key Privacy and Freedom Amendments to the EU Kids Act", "EU Kids Act - Data Minimisation and Digital Rights Safeguards", "Ensuring Voluntary Digital Identity Wallets in the EU Kids Act", "Balancing Child Safety and Fundamental Rights in the EU Kids Act", "Preventing Cross-Service Tracking Under the EU Kids Act Proposal", "EU Kids Act: The Need for Open-Source Systems and Independent Audits", "Preserving Non-Wallet Equivalent Alternatives in Age Verification Rules", "Ensuring Necessary and Proportionate Identification Rules in the EU Kids Act", "A Constituent's Appeal to MEPs Regarding the Impending EU Kids Act Vote", "Safeguard Digital Privacy and Pseudonymous Access in the EU Kids Act"],
+                bodies: [
+`Dear Member of the European Parliament,
+
+I am writing to express my strong concern regarding the current direction of the EU Kids Act. While protecting children online is an absolute imperative, imposing mandatory identity verification threatens the fundamental privacy and online anonymity of all European citizens.
+
+I urge you to either oppose the legislation in its current form or support robust amendments that protect data minimisation and anonymous access to lawful services.
+
+Sincerely,
+`,
+`Dear MEP,
+
+As a citizen who relies on the internet daily for work, news, and personal life, I have been closely following the debates on the EU Kids Act. We all want the digital world to be safe for young people, but requiring adults to present digital identification simply to browse online is a step too far.
+
+Anonymity and privacy have always been core pillars of a free internet. Please advocate for voluntary approaches and safeguard our personal freedom online.
+
+Best regards,
+`,
+`Dear Member of the European Parliament,
+
+I am contacting you regarding the upcoming legislative decision on the EU Kids Act and its potential ramifications for fundamental rights under the EU Charter.
+
+To maintain a necessary and proportionate balance between protecting minors and safeguarding citizens' digital rights, I respectfully request that you support voluntary EUDIW status, selective disclosure for age verification, and express prohibitions against cross-service tracking.
+
+Yours sincerely,
+`]
+            },
+            gr: {
+                subjects: ["Προστασία των παιδιών στο διαδίκτυο χωρίς παραβίαση της ιδιωτικότητας", "EU Kids Act: Ανησυχίες για την ανωνυμία και τα προσωπικά δεδομένα", "Έκκληση για τροπολογίες στο EU Kids Act – Διασφάλιση της ανώνυμης πρόσβασης", "Ψηφιακή ταυτοποίηση και ελευθερία στο διαδίκτυο: Η θέση μου για το EU Kids Act", "Γιατί η υποχρεωτική επαλήθευση ηλικίας απειλεί τα θεμελιώδη δικαιώματα", "EU Kids Act: Χρειαζόμαστε εθελοντικά ψηφιακά πορτοφόλια και ελάχιστα δεδομένα", "Προστατεύστε την ιδιωτικότητα των Ευρωπαίων πολιτών στο EU Kids Act", "EU Kids Act – Ανάγκη για ανεξάρτητους ελέγχους ασφαλείας και ανοιχτό κώδικα", "Όχι στην παρακολούθηση μεταξύ υπηρεσιών μέσω της επαλήθευσης ηλικίας", "Διασφάλιση ισοδύναμων εναλλακτικών λύσεων εκτός ψηφιακών πορτοφολιών", "Σημαντικές επιφυλάξεις για τις διατάξεις ταυτοποίησης στο EU Kids Act", "Μην ψηφίσετε το EU Kids Act!!!"],
+                bodies: [
+`Αξιότιμε/η Ευρωβουλευτή,
+
+Σας γράφω για να εκφράσω την έντονη ανησυχία μου σχετικά με την τρέχουσα μορφή της πρότασης EU Kids Act. Παρότι η προστασία των ανηλίκων στο διαδίκτυο αποτελεί αδιαμφισβήτητη προτεραιότητα, η επιβολή μηχανισμών υποχρεωτικής ταυτοποίησης απειλεί την ιδιωτικότητα και την ανωνυμία όλων των πολιτών.
+
+Σας καλώ είτε να καταψηφίσετε την πρόταση είτε να υποστηρίξετε τροπολογίες που διασφαλίζουν την ανώνυμη πρόσβαση σε νόμιμες υπηρεσίες και την αυστηρή ελαχιστοποίηση των δεδομένων.
+
+Με εκτίμηση,
+`,
+`Αγαπητέ/ή Ευρωβουλευτή,
+
+Ως πολίτης που χρησιμοποιεί καθημερινά το διαδίκτυο για εργασία, ενημέρωση και επικοινωνία, παρακολουθώ με προβληματισμό τις συζητήσεις για το EU Kids Act. Όλοι θέλουμε ένα ασφαλές περιβάλλον για τα παιδιά μας, αλλά αυτό δεν πρέπει να συμβεί με τίμημα τη διαρκή ταυτοποίηση των ενηλίκων.
+
+Ανησυχώ ιδιαίτερα για το ενδεχόμενο να χάσουμε την ελευθερία της ψευδώνυμης περιήγησης. Σας παρακαλώ θερμά να στηρίξετε λύσεις που βασίζονται στην επιλογή, την εθελοντική χρήση ψηφιακών πορτοφολιών και την προστασία από τη διασταύρωση δεδομένων.
+
+Φιλικά,
+`,
+`Αξιότιμε/η Ευρωβουλευτή,
+
+Επικοινωνώ μαζί σας αναφορικά με τη νομοθετική πρόταση EU Kids Act και τις επιπτώσεις της στα θεμελιώδη δικαιώματα. Παρότι ο στόχος προστασίας είναι θεμιτός, οι μηχανισμοί ενέχουν κινδύνους.
+
+Για να διατηρηθεί η αναλογικότητα, θεωρώ απαραίτητες τις εξής τροπολογίες: εθελοντικός χαρακτήρας Ψηφιακών Πορτοφολιών, επιλεκτική αποκάλυψη (selective disclosure), ανοιχτός κώδικας, και απαγόρευση παρακολούθησης χρήσης μεταξύ διαφορετικών υπηρεσιών.
+
+Μετά τιμής,
+`]
+            },
+            de: {
+                subjects: ["EU Kids Act: Kinderschutz wahren, digitale Anonymität schützen", "Bedenken bezüglich der Identifizierungspflicht im EU Kids Act", "Bitte um Ausgleich und Datenschutz beim EU Kids Act", "Keine digitale Massenüberwachung unter dem Vorwand des Jugendschutzes", "EU Kids Act - Verhältnismäßigkeit und Datenminimierung sicherstellen", "Schutz von Grundrechten im Rahmen der EU-Kids-Act-Gesetzgebung", "Freiwilligkeit digitaler Brieftaschen im EU Kids Act verankern", "EU Kids Act: Bedenken gegen verpflichtende Altersverifikation", "Notwendigkeit unabhängiger Sicherheitsaudits für den EU Kids Act", "Schutz vor diensteübergreifendem Tracking im EU Kids Act", "Alternativen zu digitalen Wallets im EU Kids Act erhalten", "Appell an Ihre Stimme im Europäischen Parlament zum EU Kids Act"],
+                bodies: [
+`Sehr geehrte/r Frau/Herr Europaabgeordnete/r,
+
+ich schreibe Ihnen, um meine Besorgnis über den aktuellen Entwurf des EU Kids Acts zum Ausdruck zu bringen. Der Schutz von Kindern im Netz ist wichtig, darf jedoch nicht zur allgemeinen Aufhebung der Anonymität im Internet führen.
+
+Ich fordere Sie auf, gegen das Gesetz einzustehen oder Nachbesserungen einzufordern, die den Schutz der Privatsphäre, das Prinzip der Datenminimierung und den freien Zugang zu rechtmäßigen Online-Diensten garantieren.
+
+Mit freundlichen Grüßen
+`,
+`Sehr geehrte/r Frau/Herr Abgeordnete/r,
+
+als Bürgerin/Bürger, die/der das Internet täglich nutzt, verfolge ich die Debatte um den EU Kids Act mit großer Sorge. Wir alle wünschen uns ein sicheres Umfeld für junge Menschen, aber verpflichtende Identitätsprüfungen gefährden die Freiheit aller Nutzerinnen und Nutzer.
+
+Es muss auch künftig möglich sein, sich pseudonym oder anonym im Netz zu informieren. Bitte setzen Sie sich im Parlament für freiwillige Lösungen, den Schutz unserer persönlichen Daten und gegen eine lückenlose Identifizierungspflicht ein.
+
+Mit besten Grüßen
+`,
+`Sehr geehrte/r Frau/Herr Europaabgeordnete/r,
+
+ich wende mich an Sie bezüglich des Richtlinienentwurfs zum EU Kids Act und dessen Auswirkungen auf die Grundrechte der Bürgerinnen und Bürger in der Europäischen Union.
+
+Um die Balance zwischen Jugendschutz und Bürgerrechten zu wahren, bitte ich Sie dringend, folgende Anpassungen zu unterstützen: Freiwilligkeit digitaler Wallets, pseudonyme Verifikation, Open-Source Audits und Schutz vor Tracking.
+
+Mit vorzüglicher Hochachtung
+`]
+            },
+            fr: {
+                subjects: ["EU Kids Act: Protéger les enfants sans sacrifier la vie privée", "Inquiétudes citoyennes concernant le projet EU Kids Act", "Pour un EU Kids Act respectueux de l'anonymat en ligne", "EU Kids Act: Nécessité de préserver la minimisation des données", "Appel à des amendements protecteurs sur le EU Kids Act", "Vérification de l'âge et libertés numériques: Mon avis sur le EU Kids Act", "EU Kids Act: Garantir le caractère volontaire du portefeuille numérique", "Empêcher le traçage croisé dans le cadre du EU Kids Act", "EU Kids Act: Audits de sécurité indépendants et logiciels libres", "Préserver des alternatives équivalentes au portefeuille numérique", "Exigence de proportionnalité pour l'identification dans le EU Kids Act", "Vote sur le EU Kids Act: Défendez nos droits fondamentaux"],
+                bodies: [
+`Madame, Monsieur le Député européen,
+
+Je vous contacte pour exprimer ma vive préoccupation face à la proposition EU Kids Act. Bien que la protection des mineurs soit primordiale, imposer une vérification d'identité généralisée porte atteinte à la vie privée de tous les citoyens.
+
+Je vous demande de voter contre ce texte en l'état ou de soutenir fermement des amendements garantissant l'accès anonyme et la protection des données personnelles.
+
+Cordialement,
+`,
+`Madame, Monsieur le Député,
+
+En tant que citoyen soucieux des libertés numériques, je suis de près l'évolution du projet EU Kids Act. Nous voulons tous un Internet plus sûr pour nos enfants, mais cela ne doit pas se faire au prix d'une surveillance continue des adultes.
+
+L'obligation d'identifier chaque utilisateur risque d'éliminer l'anonymat en ligne. Merci de défendre une approche équilibrée basée sur le volontariat et le respect de la confidentialité de nos usages quotidiens.
+
+Bien à vous,
+`,
+`Madame, Monsieur le Député européen,
+
+Je sollicite votre attention au sujet du projet de directive EU Kids Act, dont certains volets soulèvent de majeures inquiétudes quant au respect de la Charte des droits fondamentaux de l'UE.
+
+Afin de concilier la protection de l'enfance et la préservation des libertés publiques, je vous invite à soutenir les garanties juridiques et techniques suivantes : Volontariat des portefeuilles numériques, divulgation sélective, transparence open-source et interdiction du traçage inter-services.
+
+Espérant pouvoir compter sur votre vigilance, je vous prie d'agréer l'expression de ma haute considération.
+`]
+            },
+            it: {
+                subjects: ["EU Kids Act: Tutela dei minori e salvaguardia della privacy", "Preoccupazioni sui requisiti di identificazione nell'EU Kids Act", "Richiesta di emendamenti a tutela dell'anonimato nell'EU Kids Act", "EU Kids Act: Importanza della minimizzazione dei dati", "Proteggere la libertà digitale nel progetto EU Kids Act", "EU Kids Act e portafoglio digitale: Garantire la volontarietà", "No al tracciamento tra servizi tramite la verifica dell'età", "EU Kids Act: Necessità di codice open source e audit indipendenti", "Garantire alternative equivalenti per la verifica dell'età", "Valutazione di proporzionalità per le norme dell'EU Kids Act", "EU Kids Act: Appello per la difesa dei diritti fondamentali", "Lettera aperta al mio Eurodeputato sul testo EU Kids Act"],
+                bodies: [
+`Gentile Eurodeputato/a,
+
+Le scrivo per esprimere la mia forte preoccupazione riguardo alla proposta EU Kids Act. La protezione dei minori è un obiettivo fondamentale, ma la verifica dell'identità obbligatoria rischia di compromettere la privacy di tutti i cittadini europei.
+
+La invito a votare contro la proposta o a sostenere emendamenti a difesa dell'accesso anonimo e della riservatezza dei dati personali.
+
+Cordiali saluti,
+`,
+`Gentile Deputato/a,
+
+Da cittadino che usa quotidianamente la rete per lavoro e vita personale, seguo con attenzione il dibattito sull'EU Kids Act. Tutti desideriamo ambienti online sicuri per i più giovani, ma questo non deve trasformarsi in un controllo sistematico su chiunque acceda a servizi web legali.
+
+L'anonimato in rete è un pilastro della libertà di espressione. Spero possa sostenere una regolamentazione proporzionata e non invasiva.
+
+Un cordiale saluto,
+`,
+`Gentile Onorevole Eurodeputato/a,
+
+Desidero sottoporre alla Sua attenzione alcune criticità sostanziali inerenti alla proposta legislativa EU Kids Act e al suo impatto sui diritti digitali dei cittadini europei.
+
+Al fine di garantire il rispetto dei principi di proporzionalità e necessità, Le chiedo di farsi promotore/trice dei seguenti emendamenti: volontarietà del portafoglio digitale, divulgazione selettiva, audit su codice aperto e divieto esplicito di tracciamento incrociato tra servizi diversi.
+
+Fiducioso/a nella Sua attenzione, Le porgo i miei più distinti saluti.
+`]
+            },
+            es: {
+                subjects: ["EU Kids Act: Protección de menores sin vulnerar la privacidad", "Preocupaciones ciudadanas sobre el proyecto EU Kids Act", "Petición de enmiendas para proteger el anonimato en el EU Kids Act", "EU Kids Act y la minimización de datos en la verificación de edad", "Defensa de la libertad digital ante la propuesta EU Kids Act", "Garantizar el carácter voluntario de la billetera digital en el EU Kids Act", "EU Kids Act: Prevención del rastreo entre servicios digitales", "Auditorías de seguridad independientes y código abierto en el EU Kids Act", "Alternativas equivalentes a la billetera digital en el EU Kids Act", "Proporcionalidad y necesidad en los requisitos del EU Kids Act", "Carta a mi Eurodiputado/a sobre las garantías del EU Kids Act", "Voto responsable sobre el proyecto de ley EU Kids Act"],
+                bodies: [
+`Estimado/a Eurodiputado/a:
+
+Le escribo para manifestar mi honda preocupación ante la propuesta del EU Kids Act. Si bien la seguridad de los menores es crucial, imponer la identificación obligatoria en Internet destruye la privacidad de toda la ciudadanía.
+
+Le pido que vote en contra del texto o respalde enmiendas que garanticen el acceso anónimo y la estricta minimización de datos.
+
+Atentamente,
+`,
+`Hola, estimado/a Eurodiputado/a:
+
+Como ciudadano/a que navega a diario por la red, estoy siguiendo muy de cerca el debate sobre el EU Kids Act. Todos queremos que Internet sea un lugar seguro para los jóvenes, pero no a costa de vigilar a toda la población adulta.
+
+La posibilidad de acceder a información de forma anónima es clave. Por favor, apoye alternativas voluntarias y respetuosas con la privacidad de los usuarios.
+
+Un saludo cordial,
+`,
+`Estimado/a Eurodiputado/a:
+
+Me dirijo a usted con relación a la propuesta legislativa EU Kids Act para solicitar su intervención en la salvaguarda de las libertades digitales de la ciudadanía europea.
+
+Para asegurar un equilibrio real entre la protección de la infancia y los derechos fundamentales, le insto a respaldar las siguientes medidas clave: voluntariedad de la billetera digital, divulgación selectiva, auditorías de código abierto y prohibición del rastreo cruzado.
+
+Agradeciendo de antemano su dedicación, le saluda atentamente,
+`]
+            },
+            pl: {
+                subjects: ["EU Kids Act: Ochrona dzieci a prawo do prywatności w sieci", "Obawy obywatelskie dotyczące weryfikacji tożsamości w EU Kids Act", "Apel o poprawki chroniące anonimowość w projekcie EU Kids Act", "Zasadnicze wątpliwości wobec regulacji w ramach EU Kids Act", "Weryfikacja wieku w EU Kids Act a zasada minimalizacji danych", "Dobrowolność portfela cyfrowego w zapisach EU Kids Act", "EU Kids Act: Zakaz śledzenia użytkowników między serwisami", "Potrzeba niezależnych audytów i otwartego kodu w EU Kids Act", "Zapewnienie alternatywnych metod weryfikacji poza cyfrowym portfelem", "Zastosowanie zasady proporcjonalności w projekcie EU Kids Act", "Stanowisko w sprawie głosowania nad projektowanymi przepisami EU Kids Act", "List do Posła do Parlamentu Europejskiego w sprawie EU Kids Act"],
+                bodies: [
+`Szanowny Panie / Szanowna Pani Poseł,
+
+Piszę do Pana/Pani, aby wyrazić zaniepokojenie obecnym kształtem projektu EU Kids Act. Ochrona małoletnich jest priorytetem, jednak obowiązkowa weryfikacja tożsamości zagraża prywatności wszystkich obywateli.
+
+Apeluję o głosowanie przeciwko projektowi lub poparcie poprawek gwarantujących anonimowy dostęp do usług internetowych i minimalizację danych.
+
+Z poważaniem,
+`,
+`Szanowny Panie / Szanowna Pani Poseł,
+
+Jako obywatel na co dzień korzystający z internetu, z niepokojem obserwuję prace nad EU Kids Act. Wszyscy chcemy bezpiecznego środowiska dla dzieci, ale nie powinno się to odbywać kosztem utraty prywatności dorosłych użytkowników.
+
+Weryfikacja tożsamości przy każdej czynności w sieci to niebezpieczny precedens. Proszę o wsparcie dla rozwiązań dobrowolnych i chroniących nasze dane osobowe.
+
+Serdecznie pozdrawiam,
+`,
+`Szanowny Panie / Szanowna Pani Poseł do Parlamentu Europejskiego,
+
+Zwracam się do Pana/Pani w sprawie projektu rozporządzenia EU Kids Act, zwracając uwagę na konieczność ochrony praw podstawowych w przestrzeni cyfrowej.
+
+Aby zapewnić zgodność projektowanych przepisów z zasadą proporcjonalności, zwracam się z prośbą o poparcie następujących poprawek: dobrowolność cyfrowego portfela, ujawnianie selektywne, audyty open-source oraz rygorystyczny zakaz śledzenia aktywności użytkowników pomiędzy różnymi serwisami.
+
+Łączę wyrazy szacunku,
+`]
+            },
+            ro: {
+                subjects: ["EU Kids Act: Protecția minorilor și respectarea vieții private", "Îngrijorări privind cerințele de identificare din EU Kids Act", "Apel pentru amendamente privind anonimitatea în EU Kids Act", "EU Kids Act: Respectarea principiului minimizării datelor", "Protejarea libertăților digitale în cadrul proiectului EU Kids Act", "Garantarea caracterului voluntar al portofelului digital în EU Kids Act", "Interzicerea urmăririi între servicii în cadrul EU Kids Act", "Audituri independente de securitate și cod deschis pentru EU Kids Act", "Alternativelor echivalente la portofelul digital în EU Kids Act", "Cerințe de identificare necesare și proporționale în EU Kids Act", "Mesaj către europarlamentarul meu privind textul EU Kids Act", "Votul asupra EU Kids Act și apărarea drepturilor fundamentale"],
+                bodies: [
+`Stimate/Stimată Europarlamentar,
+
+Vă scriu pentru a-mi exprima îngrijorarea cu privire la proiectul EU Kids Act. Deși protecția copiilor în mediul online este crucială, introducerea identificării obligatorii amenință confidențialitatea tuturor cetățenilor.
+
+Vă solicit să votați împotriva propunerii sau să susțineți amendamente care garantează accesul anonim și protecția datelor personale.
+
+Cu respect,
+`,
+`Stimate/Stimată Eurodeputat,
+
+În calitate de cetățean care utilizează zilnic internetul, urmăresc cu atenție dezbaterile privind EU Kids Act. Cu toții ne dorim un mediu sigur pentru copii, dar acest lucru nu trebuie realizat prin monitorizarea întregii populații.
+
+Dreptul de a naviga fără a furniza acte de identitate este esențial într-o societate liberă. Vă rog să sprijiniți opțiuni bazate pe voluntariat.
+
+Cu gânduri bune,
+`,
+`Stimate/Stimată Domnule/Doamnă Europarlamentar,
+
+Vă adresetez această scrisoare referitor la propunerea legislativă EU Kids Act și la impactul acesteia asupra drepturilor fundamentale ale cetățenilor europeni.
+
+Pentru a asigura un echilibru corect, vă solicit sprijinul pentru următoarele garanții juridice: voluntariatul portofelului digital, dezvăluire selectivă a vârstei, cod sursă deschis cu audituri independente și interzicerea explicită a urmăririi încrucișate între servicii.
+
+Cu deosebită considerație,
+`]
+            }
+        };
+
+        const countryLangMap = {
+            "Austria": "de", "Belgium": "fr", "Bulgaria": "en", "Croatia": "en", "Cyprus": "gr", "Czechia": "en", 
+            "Denmark": "en", "Estonia": "en", "Finland": "en", "France": "fr", "Germany": "de", "Greece": "gr", 
+            "Hungary": "en", "Ireland": "en", "Italy": "it", "Latvia": "en", "Lithuania": "en", "Luxembourg": "fr", 
+            "Malta": "en", "Netherlands": "en", "Poland": "pl", "Portugal": "en", "Romania": "ro", "Slovakia": "en", 
+            "Slovenia": "en", "Spain": "es", "Sweden": "en"
+        };
+
+        let currentLang = 'en';
+
+        function init() {
+            document.getElementById('sigCountDisplay').innerText = currentSignatures.toLocaleString();
+            let percentage = Math.min((currentSignatures / petitionGoal) * 100, 100);
+            document.getElementById('sigProgressBar').style.width = percentage + "%";
+            setLanguage('en');
         }
 
-        // Handle country selection change
-        selectElement.addEventListener('change', function() {
-            const country = this.value;
-            if(!country) return;
-
-            // Generate Mock Placeholders for MEPs based on country
-            // (In reality, you'd have a mapping object with actual MEP emails per country)
-            const generatedTo = `[Placeholder for MEP emails of ${country}]`; 
-            const generatedSubject = `URGENT: Vote AGAINST the EU Kids Act - A message from a citizen of ${country}`;
-            const generatedBody = `Dear Members of the European Parliament representing ${country},\n\nI am writing to you today as a concerned citizen to urge you to vote against the proposed EU Kids Act.\n\nThis legislation presents a severe threat to our digital privacy, threatens the existence of private gaming communities, and will inevitably push small, independent game developers out of the European market entirely due to the extreme compliance costs.\n\nMandatory age verification via digital ID for online gaming and social media is a gross overreach that compromises our fundamental rights to privacy and digital freedom.\n\nPlease represent the interests of the digital citizens of ${country} and oppose this act.\n\nSincerely,\n[Your Name]`;
-
-            // Update Input Fields
-            document.getElementById('copyTo').value = generatedTo;
-            document.getElementById('copySubject').value = generatedSubject;
-            document.getElementById('copyBody').value = generatedBody;
-
-            // Update Mailto Link
-            const mailtoLink = `mailto:${encodeURIComponent(generatedTo)}?subject=${encodeURIComponent(generatedSubject)}&body=${encodeURIComponent(generatedBody)}`;
-            const mailtoBtn = document.getElementById('mailtoBtn');
-            mailtoBtn.href = mailtoLink;
-            
-            // Enable Mailto Button UI
-            mailtoBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-            mailtoBtn.classList.add('hover:bg-yellow-400');
-        });
-
-        // Safe Copy to Clipboard function
-        function copyToClipboard(elementId, buttonElement) {
-            // Ensure a country is selected first
-            if(!selectElement.value) {
-                const originalText = buttonElement.innerText;
-                buttonElement.innerText = 'SELECT COUNTRY';
-                buttonElement.classList.add('bg-red-500', 'text-white');
-                buttonElement.classList.remove('bg-campaign-yellow', 'text-black');
-                setTimeout(() => {
-                    buttonElement.innerText = originalText;
-                    buttonElement.classList.remove('bg-red-500', 'text-white');
-                    buttonElement.classList.add('bg-campaign-yellow', 'text-black');
-                }, 2000);
-                return;
-            }
-
-            const copyText = document.getElementById(elementId);
-            
-            // Select the text field
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
-
+        function setLanguage(lang) {
             try {
-                // Execute copy command
-                document.execCommand('copy');
+                currentLang = lang;
+                const dict = i18n[lang] || i18n['en'];
                 
-                // Visual feedback
-                const originalText = buttonElement.innerText;
-                buttonElement.innerText = 'COPIED!';
-                buttonElement.classList.add('bg-green-500', 'text-white');
-                buttonElement.classList.remove('bg-campaign-yellow', 'text-black');
-                
-                setTimeout(() => {
-                    buttonElement.innerText = originalText;
-                    buttonElement.classList.remove('bg-green-500', 'text-white');
-                    buttonElement.classList.add('bg-campaign-yellow', 'text-black');
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (dict[key]) el.innerHTML = dict[key];
+                });
+
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const key = el.getAttribute('data-i18n-placeholder');
+                    if (dict[key]) el.placeholder = dict[key];
+                });
+
+                if(document.getElementById('countrySelect').value) {
+                    generateEmail();
+                }
+            } catch(e) {
+                console.error("Language script error:", e);
             }
         }
+
+        function generateEmail() {
+            try {
+                const country = document.getElementById('countrySelect').value;
+                const name = document.getElementById('userName').value || "";
+                const mailtoBtn = document.getElementById('mailtoBtn');
+
+                if (!country) return;
+
+                mailtoBtn.classList.remove('pointer-events-none', 'opacity-50');
+                mailtoBtn.classList.add('hover:bg-yellow-500');
+
+                let emailLang = countryLangMap[country] || 'en';
+                let templates = emailContent[emailLang] || emailContent['en'];
+
+                const randomSubj = templates.subjects[Math.floor(Math.random() * templates.subjects.length)];
+                const randomBodyRaw = templates.bodies[Math.floor(Math.random() * templates.bodies.length)];
+                
+                // Add the name below the sign-off cleanly
+                const finalBody = randomBodyRaw + name;
+                
+                const mepEmails = `meps-${country.toLowerCase()}@europarl.europa.eu`;
+
+                document.getElementById('copyTo').value = mepEmails;
+                document.getElementById('copySub').value = randomSubj;
+                document.getElementById('copyBody').value = finalBody;
+                
+                const mailtoLink = `mailto:${mepEmails}?subject=${encodeURIComponent(randomSubj)}&body=${encodeURIComponent(finalBody)}`;
+                mailtoBtn.href = mailtoLink;
+            } catch(e) {
+                console.error("Email generation error:", e);
+            }
+        }
+
+        function copyField(elementId, btnElement) {
+            try {
+                const el = document.getElementById(elementId);
+                el.select();
+                el.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(el.value);
+                
+                // Change text to 'COPIED', then revert after 2 seconds
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "COPIED";
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                }, 2000);
+            } catch(e) {
+                console.error("Copy error:", e);
+            }
+        }
+
+        function toggleShareMenu() {
+            const menu = document.getElementById('shareMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function sharePlatform(platform) {
+            const shareUrl = "https://eci.ec.europa.eu/066/public/#/screen/home";
+            const shareText = "If the EU Kids Act passes, you will need to scan your ID to play online games. Help us stop it. Sign the petition!";
+            const encodedUrl = encodeURIComponent(shareUrl);
+            const encodedText = encodeURIComponent(shareText);
+
+            if (platform === 'whatsapp') window.open(`https://wa.me/?text=${encodedText}%20${encodedUrl}`, '_blank');
+            else if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`, '_blank');
+            else if (platform === 'messenger') window.open(`fb-messenger://share/?link=${encodedUrl}`, '_blank');
+            else {
+                navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+                alert(`Link and message copied! Open ${platform.charAt(0).toUpperCase() + platform.slice(1)} and paste it to your friends.`);
+            }
+            toggleShareMenu();
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('#shareDropdownContainer')) {
+                document.getElementById('shareMenu').classList.add('hidden');
+            }
+        }
+
+        window.onload = init;
     </script>
 </body>
 </html>
